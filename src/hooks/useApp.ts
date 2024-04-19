@@ -28,6 +28,7 @@ function useApp() {
         data.yPosition.current += 100;
         return {
           id: data.getId(),
+          type: "customType",
           position: { x: 400, y: data.yPosition.current },
           data: { label: item },
         };
@@ -56,6 +57,7 @@ function useApp() {
     if (nodes.length == 0) {
       data?.reset();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes]);
 
   //react flow events
@@ -110,8 +112,11 @@ function useApp() {
           ...els,
           {
             id: data?.getId(),
+            type: "customType",
             position: { x: 100, y: data?.yPosition.current },
-            data: { label: label || "Untitled" },
+            data: {
+              label: label || "Untitled",
+            },
           },
         ];
       });
@@ -126,6 +131,7 @@ function useApp() {
         ...prev,
         {
           id: data?.getId(),
+          type: "customType",
           position: {
             x: selectedNode.position.x + 200,
             y: selectedNode.position.y,
@@ -134,6 +140,7 @@ function useApp() {
         },
       ]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedNode]);
 
   //export data needed

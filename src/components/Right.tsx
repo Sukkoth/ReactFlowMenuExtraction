@@ -11,6 +11,11 @@ import MenuItem from "./right/MenuItem";
 import AddNode from "./right/AddNode";
 import Hint from "./right/Hint";
 import useApp from "../hooks/useApp";
+import AppNode from "./AppNode";
+
+const nodeTypes = {
+  customType: AppNode,
+};
 
 function Right() {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -40,6 +45,7 @@ function Right() {
       </div>
       <Hint />
       <ReactFlow
+        nodeTypes={nodeTypes}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
