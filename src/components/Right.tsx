@@ -31,17 +31,7 @@ function Right() {
   } = useApp();
 
   return (
-    <div className='p-5 w-full border border-orange-400 rounded-2xl relative overflow-hidden'>
-      {showModal && (
-        <AddNode setShow={() => setShowModal(false)} onAdd={addNode} />
-      )}
-      <div className='absolute left-1 top-1 flex gap-2'>
-        <MenuItem onClick={() => setShowModal(true)}>📌 Add Node</MenuItem>
-        {/* <MenuItem active={selectedNode !== null} onClick={duplicateNode}>
-          🚀 Duplicate Node
-        </MenuItem> */}
-      </div>
-      <Hint />
+    <div className='p-5 w-full md:w-[2/3] border border-orange-400 rounded-2xl relative overflow-hidden h-[84dvh]'>
       <ReactFlow
         nodeTypes={nodeTypes}
         nodes={nodes}
@@ -58,6 +48,13 @@ function Right() {
           }
         }}
       >
+        {showModal && (
+          <AddNode setShow={() => setShowModal(false)} onAdd={addNode} />
+        )}
+        <div className='absolute left-1 top-1 flex gap-2'>
+          <MenuItem onClick={() => setShowModal(true)}>📌 Add Node</MenuItem>
+        </div>
+        <Hint />
         <Background variant={BackgroundVariant.Dots} size={2} />
         <MiniMap nodeStrokeWidth={3} nodeColor={"orange"} />
         <Controls />

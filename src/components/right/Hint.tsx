@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Hint() {
-  const [showHint, setShowHint] = useState(true);
+  const [showHint, setShowHint] = useState(false);
   return (
     <div
       onClick={() => {
