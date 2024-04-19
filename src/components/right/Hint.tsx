@@ -32,17 +32,23 @@ function Hint() {
               </p>
             </li>
           </ul>
-          <p className='font-mono mt-5 text-end'>
-            🖥️ Created by Gadisa T.
+          <p className='font-mono mt-2 text-end'>🛠️ Created by Gadisa T.</p>
+          <div className='flex justify-end gap-4 mt-3'>
             <a
               href='https://t.me/sukkoth'
               target='_blank'
-              className='text-orange-800'
+              className='hover:scale-110'
             >
-              (@sukkoth)
-            </a>{" "}
-            😎
-          </p>
+              <img className='size-6' src='/telegram.png' alt='telegram' />
+            </a>
+            <a
+              href='https://github.com/Sukkoth/ReactFlowMenuExtraction'
+              target='_blank'
+              className='hover:scale-110'
+            >
+              <img className='size-6' src='/github.png' alt='telegram' />
+            </a>
+          </div>
         </div>
       ) : (
         <div className='flex flex-col items-center justify-center px-2 py-2'>
