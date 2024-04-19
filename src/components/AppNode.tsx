@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Handle, Position } from "reactflow";
 
 type propTypes = {
-  data: { label: string };
+  data: {
+    label: string;
+    onDuplicate?: (nodeId: string) => void;
+    onDelete?: (nodeId: string) => void;
+  };
   id: string;
 };
 
@@ -36,10 +40,22 @@ function AppNode({ data, id }: propTypes) {
           visibility: showMenu ? "visible" : "hidden",
         }}
       >
-        <button onClick={() => console.log("DUPLICATE ", id)}>
+        <button
+          onClick={() => {
+            if (data.onDuplicate) {
+              data.onDuplicate(id);
+            }
+          }}
+        >
           <img src='/copy.png' alt='Copy this node' className='size-4' />
         </button>
-        <button onClick={() => console.log("DELETE ", id)}>
+        <button
+          onClick={() => {
+            if (data.onDelete) {
+              data.onDelete(id);
+            }
+          }}
+        >
           <img src='/trash1.png' alt='Copy this node' className='size-4' />
         </button>
       </div>

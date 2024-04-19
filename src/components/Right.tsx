@@ -39,9 +39,9 @@ function Right() {
       )}
       <div className='absolute left-1 top-1 flex gap-2'>
         <MenuItem onClick={() => setShowModal(true)}>📌 Add Node</MenuItem>
-        <MenuItem active={selectedNode !== null} onClick={duplicateNode}>
+        {/* <MenuItem active={selectedNode !== null} onClick={duplicateNode}>
           🚀 Duplicate Node
-        </MenuItem>
+        </MenuItem> */}
       </div>
       <Hint />
       <ReactFlow

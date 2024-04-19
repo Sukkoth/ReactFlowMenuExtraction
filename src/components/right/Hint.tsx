@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function Hint() {
   const [showHint, setShowHint] = useState(true);
@@ -19,7 +19,7 @@ function Hint() {
           >
             <p>❌</p>
           </div>
-          <ul className='space-y-1'>
+          <ul className='space-y-1 font-mono'>
             <li>
               <p>🔭 Pinch/Scroll to zoom</p>
             </li>
@@ -27,9 +27,7 @@ function Hint() {
               <p>↔️ Hold and drag to move around</p>
             </li>
             <li>
-              <p>
-                ✂️ <strong>backspace</strong> to delete node
-              </p>
+              <p>🚀 Hover on node for options</p>
             </li>
           </ul>
           <p className='font-mono mt-2 text-end'>🛠️ Created by Gadisa T.</p>
