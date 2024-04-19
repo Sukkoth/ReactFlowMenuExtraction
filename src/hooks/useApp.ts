@@ -34,6 +34,7 @@ function useApp() {
             label: item,
             onDuplicate: data?.duplicateNode,
             onDelete: data?.deleteNode,
+            onUpdate: data?.updateNode,
           },
         };
       });

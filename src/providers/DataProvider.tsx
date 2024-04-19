@@ -24,14 +24,11 @@ function DataProvider({ children }: { children: React.ReactNode }) {
 
   const deleteNode = useCallback(
     (nodeId: string) => {
-      //if you use filter on nodes array, onNodeDelete effect won't be detected.
-      //so using this property from reactflow hook fixes
       deleteElements({ nodes: [{ id: nodeId }] });
     },
     [deleteElements]
   );
 
-  //duplicate a node from nodes list
   const duplicateNode = useCallback(
     (nodeId: string) => {
       const nodeToDubplicate = getNode(nodeId);
@@ -54,7 +51,6 @@ function DataProvider({ children }: { children: React.ReactNode }) {
     [addNodes]
   );
 
-  // add a new node to nodes list
   const addNode = useCallback((label: string) => {
     yPosition.current += 100;
     setNodes((els) => {
@@ -68,6 +64,7 @@ function DataProvider({ children }: { children: React.ReactNode }) {
             label: label || "Untitled",
             onDuplicate: duplicateNode,
             onDelete: deleteNode,
+            onUpdate: updateNode,
           },
         },
       ];
@@ -75,6 +72,20 @@ function DataProvider({ children }: { children: React.ReactNode }) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const updateNode = useCallback(
+    (nodeId: string, label: string) => {
+      setNodes((nodes) =>
+        nodes.map((node) => {
+          if (node.id === nodeId) {
+            return { ...node, data: { ...node.data, label: label } };
+          }
+          return node;
+        })
+      );
+    },
+    [setNodes]
+  );
 
   const propsToPass: ProviderValues = {
     textInput,
@@ -87,6 +98,7 @@ function DataProvider({ children }: { children: React.ReactNode }) {
     addNode,
     deleteNode,
     duplicateNode,
+    updateNode,
   };
   return (
     <DataContext.Provider value={propsToPass}>{children}</DataContext.Provider>
@@ -106,4 +118,5 @@ type ProviderValues = {
   deleteNode: (nodeId: string) => void;
   duplicateNode: (nodeId: string) => void;
   addNode: (label: string) => void;
+  updateNode: (nodeId: string, label: string) => void;
 };
