@@ -1,4 +1,4 @@
-# ReactFlow Menu Extraction and Visualization
+# ReactFlow Menu Extraction and Visualization 🔖
 
 ## Introduction
 
@@ -21,4 +21,7 @@ ReactFlow Integration: Enabled node addition, deletion, duplication, and edge co
 - **Paste Text**: Enter text containing potential menu structures into the text area on the left panel.
 - **Extract Menu Items**: Click the "Extract" button to trigger the extraction process.
 - **Visualize Menu Items**: View the extracted menu items displayed in a structured format on the left panel.
-- **Interact with Nodes**: Use the ReactFlow canvas on the center panel to interact with nodes, add/delete/duplicate nodes, and connect them with directional edges.
+- **Interact with Nodes**: Use the ReactFlow canvas on the center panel to interact with nodes, add/update/delete/duplicate nodes, and connect them with directional edges.
+  > **Duplicate** Hover over the node and click on copy icon
+  > **Update** Double click on any node's label to edit
+  > **Delete** Hover over the node and click on trashcan icon
