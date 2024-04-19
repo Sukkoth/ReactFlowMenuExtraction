@@ -11,7 +11,6 @@ import {
   getIncomers,
   getConnectedEdges,
   getOutgoers,
-  useReactFlow,
 } from "reactflow";
 import { DataContext } from "../providers/DataProvider";
 
@@ -20,7 +19,6 @@ function useApp() {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
-  const { deleteElements, addNodes, getNode } = useReactFlow();
 
   //listen to menus from textarea and add them to nodes list
   //also update edges along with it
@@ -34,8 +32,8 @@ function useApp() {
           position: { x: 400, y: data.yPosition.current },
           data: {
             label: item,
-            onDuplicate: duplicateNode,
-            onDelete: deleteNode,
+            onDuplicate: data?.duplicateNode,
+            onDelete: data?.deleteNode,
           },
         };
       });
@@ -48,7 +46,6 @@ function useApp() {
         };
         initialEdges.push(edge);
       }
-
       setNodes(nodes);
       setEdges(initialEdges);
     } else {
@@ -109,62 +106,6 @@ function useApp() {
     [nodes, edges]
   );
 
-  // add a new node to nodes list
-  const addNode = useCallback((label: string) => {
-    if (data !== null) {
-      data.yPosition.current += 100;
-      setNodes((els) => {
-        return [
-          ...els,
-          {
-            id: data?.getId(),
-            type: "customType",
-            position: { x: 100, y: data?.yPosition.current },
-            data: {
-              label: label || "Untitled",
-              onDuplicate: duplicateNode,
-              onDelete: deleteNode,
-            },
-          },
-        ];
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  //duplicate a node from nodes list
-  const duplicateNode = useCallback(
-    (nodeId: string) => {
-      if (data !== null && nodeId) {
-        const nodeToDubplicate = getNode(nodeId);
-        if (!nodeToDubplicate?.id) return;
-        addNodes({
-          id: data?.getId(),
-          type: "customType",
-          position: {
-            x: nodeToDubplicate.position.x + 200,
-            y: nodeToDubplicate.position.y,
-          },
-          data: {
-            ...nodeToDubplicate.data,
-            label: nodeToDubplicate.data.label + " copy",
-          },
-        });
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [nodes, addNodes]
-  );
-
-  const deleteNode = useCallback(
-    (nodeId: string) => {
-      //if you use filter on nodes array, onNodeDelete effect won't be detected.
-      //so using this property from reactflow hook fixes
-      deleteElements({ nodes: [{ id: nodeId }] });
-    },
-    [deleteElements]
-  );
-
   //export data needed
   return {
     nodes,
@@ -175,8 +116,7 @@ function useApp() {
     onEdgesChange,
     onConnect,
     onNodesDelete,
-    addNode,
-    duplicateNode,
+    addNode: data?.addNode,
   };
 }
 

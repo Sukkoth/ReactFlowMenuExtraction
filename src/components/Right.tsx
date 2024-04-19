@@ -24,12 +24,10 @@ function Right() {
     onEdgesChange,
     onConnect,
     onNodesDelete,
-    addNode,
-    duplicateNode,
     nodes,
     edges,
-    selectedNode,
     setSelectedNode,
+    addNode,
   } = useApp();
 
   return (

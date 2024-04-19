@@ -5,7 +5,7 @@ function AddNode({
   onAdd,
 }: {
   setShow: () => void;
-  onAdd: (label: string) => void;
+  onAdd?: (label: string) => void;
 }) {
   const [label, setLabel] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -21,8 +21,9 @@ function AddNode({
       <div className=' bg-orange-50/50 border border-orange-500 rounded-2xl p-5'>
         <h1 className='text-center mb-3 font-medium'>Add New Node</h1>
         <form
-          onSubmit={() => {
-            if (label) {
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (label && onAdd) {
               onAdd(label);
               setShow();
             }
@@ -50,6 +51,7 @@ function AddNode({
               Add
             </button>
             <button
+              type='button'
               onClick={setShow}
               className='rounded-xl text-white font-medium  bg-blue-200 py-2 px-6 hover:bg-blue-300 hover:ring-1 hover:ring-blue-300 hover:ring-offset-2'
             >
