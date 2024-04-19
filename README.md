@@ -1,30 +1,21 @@
-# React + TypeScript + Vite
+# ReactFlow Menu Extraction and Visualization
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+Welcome to my solution for EPhone's Recruitment Challenge! This project demonstrates my skills in building a React application using TypeScript and ReactFlow. In this challenge, I focused on implementing menu extraction and visualization functionalities as per the provided requirements.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Overview
 
-## Expanding the ESLint configuration
+This project aims to extract menu items from text input and visualize them using ReactFlow. The extracted menu items are displayed in a structured format, and users can interact with them on the ReactFlow canvas.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+Menu Extraction: Implemented regular expression-based extraction of menu items formatted as "<number>. <Menu Text>".
+ReactFlow Integration: Enabled node addition, deletion, duplication, and edge connections on the ReactFlow canvas.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Usage
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Paste Text: Enter text containing potential menu structures into the text area on the left panel.
+Extract Menu Items: Click the "Extract" button to trigger the extraction process.
+Visualize Menu Items: View the extracted menu items displayed in a structured format on the left panel.
+Interact with Nodes: Use the ReactFlow canvas on the center panel to interact with nodes, add/delete/duplicate nodes, and connect them with directional edges.
