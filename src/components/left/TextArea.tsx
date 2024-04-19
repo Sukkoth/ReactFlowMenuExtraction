@@ -20,6 +20,10 @@ function TextArea() {
           rows={10}
           placeholder='Paste/type your menu items here'
         ></textarea>
+        <p className='font-mono text-sm'>
+          <strong>Note:</strong> Input should be in form of <br />
+          1. Home <br /> 2. Login <br /> 3. Services
+        </p>
       </div>
       <div className='flex items-center justify-center p-5 gap-x-5'>
         <button
