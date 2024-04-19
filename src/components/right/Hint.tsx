@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Hint() {
-  const [showHint, setShowHint] = useState(false);
+  const [showHint, setShowHint] = useState(true);
   return (
     <div
       onClick={() => {
@@ -32,6 +32,17 @@ function Hint() {
               </p>
             </li>
           </ul>
+          <p className='font-mono mt-5 text-end'>
+            🖥️ Created by Gadisa T.
+            <a
+              href='https://t.me/sukkoth'
+              target='_blank'
+              className='text-orange-800'
+            >
+              (@sukkoth)
+            </a>{" "}
+            😎
+          </p>
         </div>
       ) : (
         <div className='flex flex-col items-center justify-center px-2 py-2'>
