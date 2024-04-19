@@ -10,7 +10,7 @@ This project aims to extract menu items from text input and visualize them using
 
 ## Features
 
-Menu Extraction: Implemented regular expression-based extraction of menu items formatted as "<number>. <Menu Text>".
+Menu Extraction: Implemented regular expression-based extraction of menu items formatted as "\<number\>. \<Menu Text\>".
 ReactFlow Integration: Enabled node addition, deletion, duplication, and edge connections on the ReactFlow canvas.
 
 ## Usage
