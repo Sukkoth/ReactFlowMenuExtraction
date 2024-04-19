@@ -6,7 +6,7 @@ function App() {
   return (
     <main className='font-main p-5 border border-orange-400 m-3 rounded-3xl min-h-[95dvh]'>
       <nav className='ml-3'>
-        <h1 className='text-2xl md:text-3xl font-semibold text-orange-500'>
+        <h1 className='text-xl text-center md:text-start md:text-3xl font-semibold text-orange-500'>
           ReactFlow Menu Extraction and Visualization 🔖
         </h1>
       </nav>

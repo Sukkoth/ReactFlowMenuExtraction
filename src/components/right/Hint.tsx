@@ -21,7 +21,7 @@ function Hint() {
           >
             <p>❌</p>
           </div>
-          <ul className='space-y-1 font-mono'>
+          <ul className='space-y-1'>
             <li>
               <p>
                 💎 <i>Pinch/Scroll</i> to zoom
@@ -39,7 +39,11 @@ function Hint() {
             </li>
             <li>
               <p>
-                💎 <i>Double Click</i> on node to update
+                💎{" "}
+                <i>
+                  <strong>Double Click </strong>
+                </i>
+                on node to update
               </p>
             </li>
           </ul>
