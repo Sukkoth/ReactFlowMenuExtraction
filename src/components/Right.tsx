@@ -29,11 +29,9 @@ function Right() {
 
   return (
     <div className='p-5 w-full border border-orange-400 rounded-2xl relative overflow-hidden'>
-      <AddNode
-        show={showModal}
-        setShow={() => setShowModal(false)}
-        onAdd={addNode}
-      />
+      {showModal && (
+        <AddNode setShow={() => setShowModal(false)} onAdd={addNode} />
+      )}
       <div className='absolute left-1 top-1 flex gap-2'>
         <MenuItem onClick={() => setShowModal(true)}>📌 Add Node</MenuItem>
         <MenuItem active={selectedNode !== null} onClick={duplicateNode}>
