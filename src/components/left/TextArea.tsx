@@ -7,19 +7,20 @@ function TextArea() {
   const [textInput, setTextInput] = useState<string>("");
 
   return (
-    <div>
-      <textarea
-        onChange={(e) => {
-          setTextInput(e.target.value);
-        }}
-        value={textInput}
-        className='border bg-transparent  border-orange-400 rounded-3xl p-5 outline-none focus:border-orange-700'
-        name=''
-        id=''
-        cols={40}
-        rows={15}
-        placeholder='Paste/type your menu items here'
-      ></textarea>
+    <>
+      <div className='w-full'>
+        <textarea
+          onChange={(e) => {
+            setTextInput(e.target.value);
+          }}
+          value={textInput}
+          className='border bg-transparent border-orange-400 rounded-3xl p-5 outline-none focus:border-orange-700'
+          name=''
+          id=''
+          rows={10}
+          placeholder='Paste/type your menu items here'
+        ></textarea>
+      </div>
       <div className='flex items-center justify-center p-5 gap-x-5'>
         <button
           onClick={() => {
@@ -47,7 +48,7 @@ function TextArea() {
           </button>
         )}
       </div>
-    </div>
+    </>
   );
 }
 

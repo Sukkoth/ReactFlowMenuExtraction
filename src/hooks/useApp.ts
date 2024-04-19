@@ -28,8 +28,14 @@ function useApp() {
         data.yPosition.current += 100;
         return {
           id: data.getId(),
+          type: "customType",
           position: { x: 400, y: data.yPosition.current },
-          data: { label: item },
+          data: {
+            label: item,
+            onDuplicate: data?.duplicateNode,
+            onDelete: data?.deleteNode,
+            onUpdate: data?.updateNode,
+          },
         };
       });
       const initialEdges = [];
@@ -41,7 +47,6 @@ function useApp() {
         };
         initialEdges.push(edge);
       }
-
       setNodes(nodes);
       setEdges(initialEdges);
     } else {
@@ -56,6 +61,7 @@ function useApp() {
     if (nodes.length == 0) {
       data?.reset();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes]);
 
   //react flow events
@@ -101,41 +107,6 @@ function useApp() {
     [nodes, edges]
   );
 
-  // add a new node to nodes list
-  const addNode = useCallback((label: string) => {
-    if (data !== null) {
-      data.yPosition.current += 100;
-      setNodes((els) => {
-        return [
-          ...els,
-          {
-            id: data?.getId(),
-            position: { x: 100, y: data?.yPosition.current },
-            data: { label: label || "Untitled" },
-          },
-        ];
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  //duplicate a node from nodes list
-  const duplicateNode = useCallback(() => {
-    if (data !== null && selectedNode) {
-      setNodes((prev) => [
-        ...prev,
-        {
-          id: data?.getId(),
-          position: {
-            x: selectedNode.position.x + 200,
-            y: selectedNode.position.y,
-          },
-          data: { label: selectedNode.data.label + " copy" },
-        },
-      ]);
-    }
-  }, [selectedNode]);
-
   //export data needed
   return {
     nodes,
@@ -146,8 +117,7 @@ function useApp() {
     onEdgesChange,
     onConnect,
     onNodesDelete,
-    addNode,
-    duplicateNode,
+    addNode: data?.addNode,
   };
 }
 

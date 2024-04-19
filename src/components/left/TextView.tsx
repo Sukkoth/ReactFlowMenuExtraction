@@ -17,8 +17,10 @@ function TextView() {
   const centerItems = data?.menus.length == 0;
 
   return (
-    <div className='w-full '>
-      <div className={`${centerItems ? "flex items-center" : ""}`}>
+    <div className='md:w-full'>
+      <div
+        className={`${centerItems ? "flex md:items-start justify-start" : ""}`}
+      >
         {data?.menus.length == 0 ? (
           <div className='px-2 py-4 w-full bg-blue-50 border border-blue-200 rounded-lg text-center'>
             <h2>Empty/No valid menu items 🥱</h2>

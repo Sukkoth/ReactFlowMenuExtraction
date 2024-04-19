@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function Hint() {
-  const [showHint, setShowHint] = useState(true);
+  const [showHint, setShowHint] = useState(
+    window.innerWidth < 600 ? false : true
+  );
   return (
     <div
       onClick={() => {
@@ -21,14 +23,27 @@ function Hint() {
           </div>
           <ul className='space-y-1'>
             <li>
-              <p>🔭 Pinch/Scroll to zoom</p>
-            </li>
-            <li>
-              <p>↔️ Hold and drag to move around</p>
+              <p>
+                💎 <i>Pinch/Scroll</i> to zoom
+              </p>
             </li>
             <li>
               <p>
-                ✂️ <strong>backspace</strong> to delete node
+                💎 <i>Hold and drag</i> to move around
+              </p>
+            </li>
+            <li>
+              <p>
+                💎 <i>Hover</i> on node for options
+              </p>
+            </li>
+            <li>
+              <p>
+                💎{" "}
+                <i>
+                  <strong>Double Click </strong>
+                </i>
+                on node to update
               </p>
             </li>
           </ul>
